@@ -24,23 +24,23 @@ public class JsonUtils {
 
         try {
             JSONObject rootObject = new JSONObject(json);
-            JSONObject nameObject = rootObject.getJSONObject(NAME);
+            JSONObject nameObject = rootObject.optJSONObject(NAME);
 
-            String mainName = nameObject.getString(MAIN_NAME);
-            String origin = rootObject.getString(PLACE_OF_ORIGIN);
-            String description = rootObject.getString(DESCRIPTION);
-            String image = rootObject.getString(IMAGE_URL);
+            String mainName = nameObject.optString(MAIN_NAME);
+            String origin = rootObject.optString(PLACE_OF_ORIGIN);
+            String description = rootObject.optString(DESCRIPTION);
+            String image = rootObject.optString(IMAGE_URL);
 
-            JSONArray akaArray = nameObject.getJSONArray(AKA);
+            JSONArray akaArray = nameObject.optJSONArray(AKA);
             List<String> akaList = new ArrayList<>();
             for (int i = 0, j = akaArray.length(); i < j; i++) {
-                akaList.add(akaArray.getString(i));
+                akaList.add(akaArray.optString(i));
             }
 
-            JSONArray ingredientsArray = rootObject.getJSONArray(INGREDIENTS);
+            JSONArray ingredientsArray = rootObject.optJSONArray(INGREDIENTS);
             List<String> ingredientsList = new ArrayList<>();
             for (int i = 0, j = ingredientsArray.length(); i < j; i++) {
-                ingredientsList.add(ingredientsArray.getString(i));
+                ingredientsList.add(ingredientsArray.optString(i));
             }
 
             return new Sandwich(mainName, akaList, origin, description, image, ingredientsList);
