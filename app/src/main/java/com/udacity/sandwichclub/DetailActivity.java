@@ -12,6 +12,7 @@ import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
+// TODO: test layout on API16
 
 public class DetailActivity extends AppCompatActivity {
 
